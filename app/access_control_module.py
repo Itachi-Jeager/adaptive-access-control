@@ -159,12 +159,12 @@ class AccessControlModule(object):
 
 
 
-if __name__ == "__main__":
-    with MongoClient("mongodb://localhost:27017") as client:
-        checking_user = AccessControlModule(18913,273476,"zone B", 310732,client, 19721)
-        user_acesss, user_risk = checking_user.risk_assess_module()
-        print(user_acesss, user_risk)
-        # process_users = ChineseWallPolicy(34687, client)
-        # user_zones = process_users.wall_policy()
-        # print(user_zones)
-        # fails [18913,273476,310732,19721]
+# if __name__ == "__main__":
+#     with MongoClient("mongodb://localhost:27017") as client:
+#         checking_user = AccessControlModule(18913,273476,"zone B", 310732,client, 19721)
+#         user_acesss, user_risk = checking_user.risk_assess_module()
+#         print(user_acesss, user_risk)
+#         # process_users = ChineseWallPolicy(34687, client)
+#         # user_zones = process_users.wall_policy()
+#         # print(user_zones)
+#         # fails [18913,273476,310732,19721]
