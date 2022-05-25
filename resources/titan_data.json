@@ -1,0 +1,11 @@
+[
+{"name": "Colossal Titan", "height": "60 m", "powers": ["Explosive transformation", "Immense size and strength", "Steam emission"], "shifters": ["Armin Arlelt", "Bertholdt Hoover"]},
+{"name": "Armored Titan", "height": "15m", "powers": ["Armored skin", "Hardening"], "shifters": ["Reiner Braun"]},
+{"name": "Attack Titan", "height": "15m", "powers": ["Future memory inheritance", "[8]"], "shifters": ["Eren Jaeger", "Grisha Jaeger", "Eren Kruger"]},
+{"name": "Female Titan", "height": "14m", "powers": ["Versatility", "Titan Attraction", "Crystallization"], "shifters": ["Annie Leonhart"]},
+{"name": "Beast Titan", "height": "17m", "powers": ["Powerful and accurate throwing", "Hardening", "Speech", "Can turn ", "Subjects of Ymir", " into Titans that he can crudely control (Users with Royal Blood only)"], "shifters": ["Zeke Jaeger", "Tom Xaver"]},
+{"name": "Jaw Titan", "height": "5 m", "powers": ["Powerful jaw strength", "Hardened claws", "Great speed and agility"], "shifters": ["Falco Grice", "Porco Galliard", "Ymir", "Marcel Galliard"]},
+{"name": "Founding Titan", "powers": ["Titan", " behavorial control", "Memory manipulation of ", "Subjects of Ymir"], "shifters": ["Eren Jaeger", "Grisha Jaeger", "Frieda Reiss", "Uri Reiss", "Rod and Uri's father", "Karl Fritz", "Ymir Fritz"]},
+{"name": "Cart Titan", "height": "4 m", "powers": ["Quadrupedal form", "High endurance", "Great speed", "Speech"], "shifters": ["Pieck Finger"]},
+{"name": "War Hammer Titan", "height": "~15m", "powers": ["Structural hardening", "Remote operation"], "shifters": ["Eren Jaeger", "Lara Tybur"]}
+]
