@@ -27,7 +27,7 @@ class ChineseWallPolicy(object):
         
         queried_zones = []
         if count_logins == 1:
-            find_user = user_db["user_info"].find_one({"user_name": self.user_id})
+            find_user = user_db["user_info"].find_one({"user_name": self.user_name})
             queried_zones.append(find_user["resource_zone"])
             return queried_zones
 
