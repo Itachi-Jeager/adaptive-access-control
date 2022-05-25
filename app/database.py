@@ -4,12 +4,18 @@ This module contains the operations used to test and populate the database.
 The operations are single use, and should only be run once.
 """
 
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
 import pymongo
 from pprint import pprint
 import json
 
-client = MongoClient("mongodb://localhost:27017")
+load_dotenv()
+
+my_db = os.getenv("MONGODB_ATLAS")
+
+client = MongoClient(my_db)
 scraped_db = client.local
 
 # scrapes = scraped_db["monday_scrape"].find_one({"title": "INCESSANT BODY PAINS. WHY? nine"})
@@ -21,7 +27,7 @@ scraped_db = client.local
 # print(scrapes)
 
 # insert dummy zone A data into the database
-with open('../resources/location_data.json', 'r') as j:
+with open('resources/location_data.json', 'r') as j:
     location_data = json.loads(j.read())
 
 for location in location_data:
@@ -34,7 +40,7 @@ zone_collection = access_control['zone_data']
 zone_collection.insert_many(location_data)
 
 # insert dummy zone B data into the database
-with open('../resources/titan_data.json', 'r') as j:
+with open('resources/titan_data.json', 'r') as j:
     titan_data = json.loads(j.read())
 
 for titan in titan_data:
@@ -47,7 +53,7 @@ zone_collection = access_control['zone_data']
 zone_collection.insert_many(titan_data)
 
 # insert dummy zone B data into the database
-with open('../resources/rick_characters.json', 'r') as j:
+with open('resources/rick_characters.json', 'r') as j:
     rick_data = json.loads(j.read())
 
 for character in rick_data:
