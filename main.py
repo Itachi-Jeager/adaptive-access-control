@@ -1,10 +1,16 @@
 """This will be the main script that houses streamlit app
     """
 
+from dotenv import load_dotenv
+import os
 import streamlit as st
 from pymongo import MongoClient
 from app.access_control_module import ChineseWallPolicy, AccessControlModule
 import app.models as models
+
+load_dotenv()
+
+my_db = os.getenv("MONGODB_ATLAS")
 
 
 # TODO: Change DB to live, may not be needed
@@ -104,7 +110,7 @@ if st.button("Request Access"):
     
     # open a connection to the database
     st.write(f'Risk Module Running with action {collect_user_action_severity}')
-    with MongoClient("mongodb://localhost:27017") as client:
+    with MongoClient(my_db) as client:
         checking_user = AccessControlModule(collect_user_name,
                                            collect_user_pass,
                                            collect_resource_zone, 
@@ -120,7 +126,7 @@ if st.button("Request Access"):
         st.write(f"You have requested Resource at {collect_resource_zone}")
         
         # open another connection to the database to retreive requested zone
-        with MongoClient('mongodb://localhost:27017') as client:
+        with MongoClient(my_db) as client:
             process_users = ChineseWallPolicy(collect_user_name, client)
             user_zones = process_users.wall_policy(collect_resource_zone)
         st.write(user_zones)
