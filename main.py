@@ -48,7 +48,7 @@ collect_user_name = st.text_input(
 )
 
 collect_user_pass = st.text_input(
-    'Password'
+    'Password', type="password"
 )
 
 # Add select box to choose what zone resource
