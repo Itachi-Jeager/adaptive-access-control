@@ -126,12 +126,12 @@ if st.button("Request Access"):
             user_zones = process_users.wall_policy(collect_resource_zone)
             
         
-        if type(user_zones) == str:
-            st.write(user_zones)
+            if type(user_zones) == str:
+                st.write(user_zones)
 
-        else:
-            my_df = pd.DataFrame(user_zones)
-            st.dataframe(my_df)
+            else:
+                my_df = pd.DataFrame(user_zones)
+                st.dataframe(my_df)
 
     else:
         st.write("Access Denied")
