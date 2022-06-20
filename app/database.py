@@ -28,17 +28,17 @@ scraped_db = client.local
 # print(scrapes)
 
 # insert dummy zone A data into the database
-with open('resources/location_data.json', 'r') as j:
-    location_data = json.loads(j.read())
+# with open('resources/location_data.json', 'r') as j:
+#     location_data = json.loads(j.read())
 
-for location in location_data:
-    location['zone'] = 'zoneA'
+# for location in location_data:
+#     location['zone'] = 'zoneA'
 
-# print(location_data)
+# # print(location_data)
 
-access_control = client.access_control
-zone_collection = access_control['zone_data']
-zone_collection.insert_many(location_data)
+# access_control = client.access_control
+# zone_collection = access_control['zone_data']
+# zone_collection.insert_many(location_data)
 
 # insert dummy zone B data into the database
 # with open('resources/titan_data.json', 'r') as j:
@@ -67,8 +67,9 @@ zone_collection.insert_many(location_data)
 # zone_collection.insert_many(rick_data)
 
 # test mongo db data in a dataframe
-# access_control = client.access_control
-# zone_a_data = access_control['zone_data'].find({"zone": "zone A"}, {'_id': False})
+access_control = client.access_control
+zone_a_data = access_control['zone_data'].find({"zone": "zoneA"}, {'_id': False})
+list_type = list(zone_a_data)
 # my_df = pd.DataFrame(zone_a_data)
-# print(my_df)
+print(list_type)
 

@@ -132,7 +132,7 @@ if st.button("Request Access"):
             else:
                 # my_df = pd.DataFrame(user_zones)
                 with st.echo():
-                    st.write(user_zones)
+                    st.write(list(user_zones))
                     
                 # st.dataframe(my_df)
 
