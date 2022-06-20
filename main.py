@@ -131,6 +131,9 @@ if st.button("Request Access"):
 
             else:
                 my_df = pd.DataFrame(user_zones)
+                with st.echo():
+                    st.write(my_df)
+                    
                 st.dataframe(my_df)
 
     else:
