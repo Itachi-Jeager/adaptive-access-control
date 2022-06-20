@@ -49,7 +49,7 @@ collect_user_pass = st.text_input(
 # Add select box to choose what zone resource
 collect_resource_zone = st.selectbox(
     'Resource Zone',
-    ('zoneA', 'zone B', 'zone C')
+    ('zone A', 'zone B', 'zone C')
 )
 
 # Add number input to the sidebar to collect user context 
@@ -131,11 +131,10 @@ if st.button("Request Access"):
 
             else:
                 my_df = pd.DataFrame.from_records(user_zones)
+                # drop id column from mongodb response
                 clean_df = my_df.drop(columns=['_id'], axis=1)
-                with st.echo():
-                    st.write(clean_df)
                     
-                # st.dataframe(my_df)
+                st.dataframe(clean_df)
 
     else:
         st.write("Access Denied")
