@@ -130,11 +130,11 @@ if st.button("Request Access"):
                 st.write(user_zones)
 
             else:
-                my_df = pd.DataFrame(user_zones)
+                # my_df = pd.DataFrame(user_zones)
                 with st.echo():
-                    st.write(my_df)
+                    st.write(user_zones)
                     
-                st.dataframe(my_df)
+                # st.dataframe(my_df)
 
     else:
         st.write("Access Denied")
