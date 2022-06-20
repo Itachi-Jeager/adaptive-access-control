@@ -130,10 +130,10 @@ if st.button("Request Access"):
                 st.write(user_zones)
 
             else:
-                my_df = pd.DataFrame.from_records(user_zones)
-                my_df.drop(columns=['_id'], axis=1)
+                # my_df = pd.DataFrame.from_records(user_zones)
+                # my_df.drop(columns=['_id'], axis=1)
                 with st.echo():
-                    st.write(my_df)
+                    st.write(user_zones)
                     
                 # st.dataframe(my_df)
 
