@@ -2,6 +2,7 @@
     """
 
 from dotenv import load_dotenv
+import pandas as pd
 import os
 import streamlit as st
 from pymongo import MongoClient
@@ -15,7 +16,6 @@ my_db = os.getenv("MONGODB_ATLAS")
 
 # TODO: Display time
 # TODO: Display location
-# TODO: have a username field used for finding new user
 # TODO: make the database data appear in a dataframe
 # TODO: add update data functionality
 # TODO: add create data functionality
@@ -124,7 +124,9 @@ if st.button("Request Access"):
         with MongoClient(my_db) as client:
             process_users = ChineseWallPolicy(collect_user_name, client)
             user_zones = process_users.wall_policy(collect_resource_zone)
-        st.write(user_zones)
+            my_df = pd.DataFrame(user_zones)
+        # st.write(user_zones)
+        st.dataframe(my_df)
 
     else:
         st.write("Access Denied")

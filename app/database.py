@@ -10,6 +10,7 @@ from pymongo import MongoClient
 import pymongo
 from pprint import pprint
 import json
+import pandas as pd
 
 load_dotenv()
 
@@ -26,43 +27,48 @@ scraped_db = client.local
 
 # print(scrapes)
 
-# insert dummy zone A data into the database
-with open('resources/location_data.json', 'r') as j:
-    location_data = json.loads(j.read())
+# # insert dummy zone A data into the database
+# with open('resources/location_data.json', 'r') as j:
+#     location_data = json.loads(j.read())
 
-for location in location_data:
-    location['zone'] = 'zone A'
+# for location in location_data:
+#     location['zone'] = 'zone A'
 
-# print(location_data)
+# # print(location_data)
 
-access_control = client.access_control
-zone_collection = access_control['zone_data']
-zone_collection.insert_many(location_data)
-
-# insert dummy zone B data into the database
-with open('resources/titan_data.json', 'r') as j:
-    titan_data = json.loads(j.read())
-
-for titan in titan_data:
-    titan['zone'] = 'zone B'
-
-# print(location_data)
-
-access_control = client.access_control
-zone_collection = access_control['zone_data']
-zone_collection.insert_many(titan_data)
+# access_control = client.access_control
+# zone_collection = access_control['zone_data']
+# zone_collection.insert_many(location_data)
 
 # insert dummy zone B data into the database
-with open('resources/rick_characters.json', 'r') as j:
-    rick_data = json.loads(j.read())
+# with open('resources/titan_data.json', 'r') as j:
+#     titan_data = json.loads(j.read())
 
-for character in rick_data:
-    character['zone'] = 'zone A'
+# for titan in titan_data:
+#     titan['zone'] = 'zone C'
 
-# print(location_data)
+# # print(location_data)
 
+# access_control = client.access_control
+# zone_collection = access_control['zone_data']
+# zone_collection.insert_many(titan_data)
+
+# # insert dummy zone B data into the database
+# with open('resources/rick_characters.json', 'r') as j:
+#     rick_data = json.loads(j.read())
+
+# for character in rick_data:
+#     character['zone'] = 'zone B'
+
+# # print(location_data)
+
+# access_control = client.access_control
+# zone_collection = access_control['zone_data']
+# zone_collection.insert_many(rick_data)
+
+# test mongo db data in a dataframe
 access_control = client.access_control
-zone_collection = access_control['zone_data']
-zone_collection.insert_many(rick_data)
-
+zone_a_data = access_control['zone_data'].find({"zone": "zone A"})
+my_df = pd.DataFrame(zone_a_data)
+print(my_df)
 
