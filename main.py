@@ -49,7 +49,7 @@ collect_user_pass = st.text_input(
 # Add select box to choose what zone resource
 collect_resource_zone = st.selectbox(
     'Resource Zone',
-    ('zone    A', 'zone B', 'zone C')
+    ('zoneA', 'zone B', 'zone C')
 )
 
 # Add number input to the sidebar to collect user context 
