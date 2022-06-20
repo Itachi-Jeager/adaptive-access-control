@@ -131,7 +131,7 @@ if st.button("Request Access"):
 
         else:
             my_df = pd.DataFrame(user_zones)
-        st.dataframe(my_df)
+            st.dataframe(my_df)
 
     else:
         st.write("Access Denied")
