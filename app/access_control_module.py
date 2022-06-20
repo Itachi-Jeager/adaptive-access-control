@@ -52,7 +52,7 @@ class ChineseWallPolicy(object):
 
         for content in find_content:
             results.append(content)
-        return results, find_content
+        return results
 
 
     def wall_policy(self, resource_zone):
