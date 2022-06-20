@@ -46,7 +46,7 @@ class ChineseWallPolicy(object):
     def query_resource_data(self, requested_zone: str):
         user_db = self.mongodb_client.access_control
 
-        find_content = user_db['zone_data'].find({"zone": requested_zone})
+        find_content = user_db['zone_data'].find({"zone": requested_zone}, {'_id': False})
 
         results = []
 

@@ -68,7 +68,7 @@ scraped_db = client.local
 
 # test mongo db data in a dataframe
 access_control = client.access_control
-zone_a_data = access_control['zone_data'].find({"zone": "zone A"})
+zone_a_data = access_control['zone_data'].find({"zone": "zone A"}, {'_id': False})
 my_df = pd.DataFrame(zone_a_data)
 print(my_df)
 
