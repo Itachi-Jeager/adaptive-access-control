@@ -67,9 +67,9 @@ scraped_db = client.local
 # zone_collection.insert_many(rick_data)
 
 # test mongo db data in a dataframe
-access_control = client.access_control
-zone_a_data = access_control['zone_data'].find({"zone": "zoneA"}, {'_id': False})
-list_type = list(zone_a_data)
-# my_df = pd.DataFrame(zone_a_data)
-print(list_type)
+# access_control = client.access_control
+# zone_a_data = access_control['zone_data'].find({"zone": "zoneA"}, {'_id': False})
+# list_type = list(zone_a_data)
+# # my_df = pd.DataFrame(zone_a_data)
+# print(list_type)
 
