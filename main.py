@@ -124,8 +124,13 @@ if st.button("Request Access"):
         with MongoClient(my_db) as client:
             process_users = ChineseWallPolicy(collect_user_name, client)
             user_zones = process_users.wall_policy(collect_resource_zone)
+            
+        
+        if type(user_zones) == str:
+            st.write(user_zones)
+
+        else:
             my_df = pd.DataFrame(user_zones)
-        # st.write(user_zones)
         st.dataframe(my_df)
 
     else:
