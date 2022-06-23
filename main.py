@@ -177,18 +177,19 @@ if st.button("Request Access"):
         with MongoClient(my_db) as client:
             process_users = ChineseWallPolicy(collect_user_name, client)
             create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
-            user_zones = process_users.wall_policy(collect_resource_zone)
+            # user_zones = process_users.wall_policy(collect_resource_zone)
+        st.write(create_data)
             
         
-            if type(user_zones) == str:
-                st.write(user_zones)
+            # if type(user_zones) == str:
+            #     st.write(user_zones)
 
-            else:
-                my_df = pd.DataFrame.from_records(user_zones)
-                # drop id column from mongodb response
-                clean_df = my_df.drop(columns=['_id'], axis=1)
+            # else:
+            #     my_df = pd.DataFrame.from_records(user_zones)
+            #     # drop id column from mongodb response
+            #     clean_df = my_df.drop(columns=['_id'], axis=1)
                     
-                st.dataframe(clean_df)
+            #     st.dataframe(clean_df)
 
 
     # elif user_access== 1 and collector == 117913:
