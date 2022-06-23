@@ -135,10 +135,9 @@ if st.button("Request Access"):
                     
                 st.dataframe(clean_df)
 
-    else:
-        st.write("Access Denied")
+    
 
-    if user_access== 1 and collector == 230983:
+    elif user_access== 1 and collector == 230983:
         st.write("Create Access granted")
         st.write(f"Welcome Device {collect_user_name}")
         st.write(f"You have requested to write to resource at {collect_resource_zone}")
