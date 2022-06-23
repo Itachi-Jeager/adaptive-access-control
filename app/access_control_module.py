@@ -57,6 +57,8 @@ class ChineseWallPolicy(object):
 
     def create_resource_data(self, requested_zone: str, item: dict):
         user_db = self.mongodb_client.access_control
+        zone_db = user_db['zone_data']
+
 
         if requested_zone == 'zone A':
             item['zone'] = 'zone A'
@@ -69,7 +71,7 @@ class ChineseWallPolicy(object):
         elif requested_zone == 'zone C':
             item['zone'] = 'zone C'
         
-        user_db.insert_one(item)
+        zone_db.insert_one(item)
         return "Database updated"
 
 
