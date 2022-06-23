@@ -153,7 +153,7 @@ if st.button("Request Access"):
                 collect_residents = st.text_input('Enter Residents comma separated', key="residents")
 
                 created_item = {'source': collect_source, 'name': collect_name, 'residents':collect_residents, 'rel_location': collect_rel_location}
-                submit_button = st.form_submit_button(label='Submit', kwargs=created_item, on_click=submit_create)
+                submit_button = st.form_submit_button(label='Submit', kwargs={'my_dict': created_item}, on_click=submit_create)
 
                 # if submit_button:
 
