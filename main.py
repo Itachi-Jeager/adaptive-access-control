@@ -148,7 +148,13 @@ if st.button("Request Access"):
             collect_residents = st.text_input('Enter Residents comma separated')
 
             created_item = {'source': collect_source, 'name': collect_name, 'rel_location': collect_rel_location}
-            pass
+
+            with MongoClient(my_db) as client:
+                process_users = ChineseWallPolicy(collect_user_name, client)
+                create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
+            # user_zones = process_users.wall_policy(collect_resource_zone)
+            st.write(create_data)
+            
         
         elif collect_resource_zone == 'zone B':
 
@@ -161,7 +167,7 @@ if st.button("Request Access"):
 
 
             created_item = {'name': collect_name, 'status': collect_name, 'gender': collect_gender, 'location': {'name': collect_location, 'url': collect_url}, 'type': collect_type}
-            pass
+        
 
         elif collect_resource_zone == 'zone C':
 
@@ -171,14 +177,12 @@ if st.button("Request Access"):
             collect_shifters = st.text_input('Enter Famous people in field')
 
             created_item = {'name': collect_name, 'height': collect_height, 'powers': collect_powers, 'shifters': collect_shifters}
-            pass
+
+        else:
+            st.write("No Data")
 
 
-        with MongoClient(my_db) as client:
-            process_users = ChineseWallPolicy(collect_user_name, client)
-            create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
-            # user_zones = process_users.wall_policy(collect_resource_zone)
-        st.write(create_data)
+        
             
         
             # if type(user_zones) == str:
