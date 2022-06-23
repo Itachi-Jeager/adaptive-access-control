@@ -62,8 +62,13 @@ collect_resource_zone = st.selectbox(
 #     value=800
 # )
 
+def submit_create():
 
-    
+    with st.sidebar:
+
+        st.write(st.session_state.name)
+        st.write(st.session_state.source)
+
 
 
 
@@ -145,11 +150,6 @@ if st.button("Request Access"):
         st.write(f"You have requested to write to resource at {collect_resource_zone}")
 
         if collect_resource_zone == 'zone A':
-            def submit_create():
-
-                st.write(st.session_state.name)
-                st.write(st.session_state.source)
-
 
             with st.form(key='create_data'):
 
