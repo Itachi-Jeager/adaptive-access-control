@@ -61,6 +61,10 @@ collect_resource_zone = st.selectbox(
 #     'Resource Sensitivity',
 #     value=800
 # )
+def submit_create(my_dict: dict):
+
+    return my_dict
+
 
 
 def action_severity_callback():
@@ -147,9 +151,11 @@ if st.button("Request Access"):
                 collect_name = st.text_input('Enter Name', key="name")
                 collect_rel_location = st.text_input('Enter Location', key="rel_location")
                 collect_residents = st.text_input('Enter Residents comma separated', key="residents")
-                submit_button = st.form_submit_button(label='Submit')
 
-                if submit_button:
+                created_item = {'source': collect_source, 'name': collect_name, 'residents':collect_residents, 'rel_location': collect_rel_location}
+                submit_button = st.form_submit_button(label='Submit', kwargs=created_item)
+
+                # if submit_button:
 
                     # created_item = {'source': collect_source, 'name': collect_name, 'residents':collect_residents, 'rel_location': collect_rel_location}
 
@@ -157,7 +163,7 @@ if st.button("Request Access"):
                     #     process_users = ChineseWallPolicy(collect_user_name, client)
                     #     create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
             # user_zones = process_users.wall_policy(collect_resource_zone)
-                    st.write(collect_name)
+                    # st.write(collect_name)
             
         
         # elif collect_resource_zone == 'zone B':
