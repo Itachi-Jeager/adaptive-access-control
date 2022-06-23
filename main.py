@@ -61,9 +61,12 @@ collect_resource_zone = st.selectbox(
 #     'Resource Sensitivity',
 #     value=800
 # )
-def submit_create(my_dict: dict):
+def submit_create():
 
-    return my_dict
+    st.write(st.session_state.name)
+    st.write(st.session_state.source)
+
+    
 
 
 
@@ -153,7 +156,7 @@ if st.button("Request Access"):
                 collect_residents = st.text_input('Enter Residents comma separated', key="residents")
 
                 created_item = {'source': collect_source, 'name': collect_name, 'residents':collect_residents, 'rel_location': collect_rel_location}
-                submit_button = st.form_submit_button(label='Submit', kwargs={'my_dict': created_item}, on_click=submit_create)
+                submit_button = st.form_submit_button(label='Submit', on_click=submit_create)
 
                 # if submit_button:
 
