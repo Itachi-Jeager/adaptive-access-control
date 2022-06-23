@@ -153,8 +153,6 @@ if st.button("Request Access"):
 
                     created_item = {'source': collect_source, 'name': collect_name, 'residents':collect_residents, 'rel_location': collect_rel_location}
 
-                    st.json(created_item)
-
                     with MongoClient(my_db) as client:
                         process_users = ChineseWallPolicy(collect_user_name, client)
                         create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
@@ -162,27 +160,27 @@ if st.button("Request Access"):
                     st.write(create_data)
             
         
-        elif collect_resource_zone == 'zone B':
+        # elif collect_resource_zone == 'zone B':
 
-            collect_name = st.text_input('Enter Name')
-            collect_gender = st.text_input('Enter Gender')
-            collect_status = st.text_input('Enter Status')
-            collect_type = st.text_input('Enter Business Type')
-            collect_location = st.text_input('Enter Address')
-            collect_url = st.text_input('Enter Business URl')
+        #     collect_name = st.text_input('Enter Name')
+        #     collect_gender = st.text_input('Enter Gender')
+        #     collect_status = st.text_input('Enter Status')
+        #     collect_type = st.text_input('Enter Business Type')
+        #     collect_location = st.text_input('Enter Address')
+        #     collect_url = st.text_input('Enter Business URl')
 
 
-            created_item = {'name': collect_name, 'status': collect_name, 'gender': collect_gender, 'location': {'name': collect_location, 'url': collect_url}, 'type': collect_type}
+        #     created_item = {'name': collect_name, 'status': collect_name, 'gender': collect_gender, 'location': {'name': collect_location, 'url': collect_url}, 'type': collect_type}
         
 
-        elif collect_resource_zone == 'zone C':
+        # elif collect_resource_zone == 'zone C':
 
-            collect_name = st.text_input('Enter Name')
-            collect_height = st.text_input('Enter Height')
-            collect_powers = st.text_input('Enter Field(s)')
-            collect_shifters = st.text_input('Enter Famous people in field')
+        #     collect_name = st.text_input('Enter Name')
+        #     collect_height = st.text_input('Enter Height')
+        #     collect_powers = st.text_input('Enter Field(s)')
+        #     collect_shifters = st.text_input('Enter Famous people in field')
 
-            created_item = {'name': collect_name, 'height': collect_height, 'powers': collect_powers, 'shifters': collect_shifters}
+        #     created_item = {'name': collect_name, 'height': collect_height, 'powers': collect_powers, 'shifters': collect_shifters}
 
         else:
             st.write("No Data")
