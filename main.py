@@ -16,7 +16,6 @@ my_db = os.getenv("MONGODB_ATLAS")
 
 # TODO: Display time
 # TODO: Display location
-# TODO: make the database data appear in a dataframe
 # TODO: add update data functionality
 # TODO: add create data functionality
 # TODO: try normalization/ standard scaler
@@ -115,7 +114,7 @@ if st.button("Request Access"):
         # retrieve processing results
         user_access, user_risk, update_status = checking_user.risk_assess_module()
     # access granted flow
-    if user_access == 1:
+    if user_access == 1 and collector == 117906:
         st.write("Access Granted")
         st.write(f" Welcome Device {collect_user_name}")
         st.write(f"You have requested Resource at {collect_resource_zone}")
@@ -138,6 +137,70 @@ if st.button("Request Access"):
 
     else:
         st.write("Access Denied")
+
+    if user_access== 1 and collector == 230983:
+        st.write("Create Access granted")
+        st.write(f"Welcome Device {collect_user_name}")
+        st.write(f"You have requested to write to resource at {collect_resource_zone}")
+
+        if collect_resource_zone == 'zone A':
+
+            collect_source = st.text_input('Enter Address')
+            collect_name = st.text_input('Enter Name')
+            collect_rel_location = st.text_input('Enter Location')
+            collect_residents = st.text_input('Enter Residents comma separated')
+
+            created_item = {'source': collect_source, 'name': collect_name, 'rel_location': collect_rel_location}
+            pass
+        
+        elif collect_resource_zone == 'zone B':
+
+            collect_name = st.text_input('Enter Name')
+            collect_gender = st.text_input('Enter Gender')
+            collect_status = st.text_input('Enter Status')
+            collect_type = st.text_input('Enter Business Type')
+            collect_location = st.text_input('Enter Address')
+            collect_url = st.text_input('Enter Business URl')
+
+
+            created_item = {'name': collect_name, 'status': collect_name, 'gender': collect_gender, 'location': {'name': collect_location, 'url': collect_url}, 'type': collect_type}
+            pass
+
+        elif collect_resource_zone == 'zone C':
+
+            collect_name = st.text_input('Enter Name')
+            collect_height = st.text_input('Enter Height')
+            collect_powers = st.text_input('Enter Field(s)')
+            collect_shifters = st.text_input('Enter Famous people in field')
+
+            created_item = {'name': collect_name, 'height': collect_height, 'powers': collect_powers, 'shifters': collect_shifters}
+            pass
+
+
+        with MongoClient(my_db) as client:
+            process_users = ChineseWallPolicy(collect_user_name, client)
+            create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
+            user_zones = process_users.wall_policy(collect_resource_zone)
+            
+        
+            if type(user_zones) == str:
+                st.write(user_zones)
+
+            else:
+                my_df = pd.DataFrame.from_records(user_zones)
+                # drop id column from mongodb response
+                clean_df = my_df.drop(columns=['_id'], axis=1)
+                    
+                st.dataframe(clean_df)
+
+
+        pass
+
+    if user_access== 1 and collector == 117913:
+        pass
+
+    if user_access== 1 and collector == 279443:
+        pass
 
 
 # left_column, right_column = st.columns(2)

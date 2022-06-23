@@ -55,6 +55,24 @@ class ChineseWallPolicy(object):
         return results
 
 
+    def create_resource_data(self, requested_zone: str, item: dict):
+        user_db = self.mongodb_client.access_control
+
+        if requested_zone == 'zone A':
+            item['zone'] = 'zone A'
+            
+
+        elif requested_zone == 'zone B':
+            item['zone'] = 'zone B'
+            
+
+        elif requested_zone == 'zone C':
+            item['zone'] = 'zone C'
+        
+        user_db.insert_one(item)
+        return "Database updated"
+
+
     def wall_policy(self, resource_zone):
         zones_queried = self.check_user_activity()
 
@@ -75,6 +93,31 @@ class ChineseWallPolicy(object):
 
         else:
             return "empty list"
+
+
+    def wall_create_policy(self, resource_zone, item: dict):
+        zones_queried = self.check_user_activity()
+
+        if len(zones_queried) == 1:
+            zone_results = self.create_resource_data(resource_zone, item)
+            return zone_results
+
+        elif len(zones_queried) > 1 and zones_queried[0] == resource_zone:
+            zone_results = self.create_resource_data(resource_zone, item)
+            return zone_results
+
+        elif len(zones_queried) > 1 and zones_queried[0] != resource_zone:
+            return f"access denied to resources at {zones_queried[-1]}"
+
+        elif len(zones_queried) > 1 and zones_queried[0] != zones_queried[-1]:
+            return f"access denied to resources at {zones_queried[-1]}"
+
+        else:
+            return "empty list"
+
+
+    def wall_update_policy(self, resource_zone, item: dict):
+        pass
 
     pass
 
