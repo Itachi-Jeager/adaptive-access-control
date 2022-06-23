@@ -142,14 +142,14 @@ if st.button("Request Access"):
 
         if collect_resource_zone == 'zone A':
 
-            collect_source = st.text_input('Enter Address')
-            collect_name = st.text_input('Enter Name')
-            collect_rel_location = st.text_input('Enter Location')
-            collect_residents = st.text_input('Enter Residents comma separated')
+            collect_source = st.text_input('Enter Address', key="source")
+            collect_name = st.text_input('Enter Name', key="name")
+            collect_rel_location = st.text_input('Enter Location', key="rel_location")
+            collect_residents = st.text_input('Enter Residents comma separated', key="residents")
 
             if st.button("Write Data"):
 
-                created_item = {'source': collect_source, 'name': collect_name, 'rel_location': collect_rel_location}
+                created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'rel_location': st.session_state.rel_location, 'residents':st.session_state.residents}
 
                 with MongoClient(my_db) as client:
                     process_users = ChineseWallPolicy(collect_user_name, client)
