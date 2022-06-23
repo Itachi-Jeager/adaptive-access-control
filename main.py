@@ -195,11 +195,14 @@ if st.button("Request Access"):
 
         pass
 
-    if user_access== 1 and collector == 117913:
+    elif user_access== 1 and collector == 117913:
         pass
 
-    if user_access== 1 and collector == 279443:
+    elif user_access== 1 and collector == 279443:
         pass
+
+    else:
+        st.write("Access Denied")
 
 
 # left_column, right_column = st.columns(2)
