@@ -153,6 +153,8 @@ if st.button("Request Access"):
 
                     created_item = {'source': collect_source, 'name': collect_name, 'residents':collect_residents, 'rel_location': collect_rel_location}
 
+                    st.json(created_item)
+
                     with MongoClient(my_db) as client:
                         process_users = ChineseWallPolicy(collect_user_name, client)
                         create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
