@@ -135,7 +135,7 @@ if st.button("Request Access"):
                     
                 st.dataframe(clean_df)
 
-    elif user_access== 1 and collect_user_action_severity== 'Read':
+    elif user_access== 1 and collect_user_action_severity== 'Create':
         st.write("Create Access granted")
         st.write(f"Welcome Device {collect_user_name}")
         st.write(f"You have requested to write to resource at {collect_resource_zone}")
