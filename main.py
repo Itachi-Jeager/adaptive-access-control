@@ -114,7 +114,7 @@ if st.button("Request Access"):
         # retrieve processing results
         user_access, user_risk, update_status = checking_user.risk_assess_module()
     # access granted flow
-    if user_access == 1 and collector == 117906:
+    if user_access == 1 and collect_user_action_severity== 'Read':
         st.write("Access Granted")
         st.write(f" Welcome Device {collect_user_name}")
         st.write(f"You have requested Resource at {collect_resource_zone}")
@@ -135,9 +135,7 @@ if st.button("Request Access"):
                     
                 st.dataframe(clean_df)
 
-    
-
-    elif user_access== 1 and collector == 230983:
+    elif user_access== 1 and collect_user_action_severity== 'Read':
         st.write("Create Access granted")
         st.write(f"Welcome Device {collect_user_name}")
         st.write(f"You have requested to write to resource at {collect_resource_zone}")
@@ -193,13 +191,11 @@ if st.button("Request Access"):
                 st.dataframe(clean_df)
 
 
-        pass
+    # elif user_access== 1 and collector == 117913:
+    #     pass
 
-    elif user_access== 1 and collector == 117913:
-        pass
-
-    elif user_access== 1 and collector == 279443:
-        pass
+    # elif user_access== 1 and collector == 279443:
+    #     pass
 
     else:
         st.write("Access Denied")
