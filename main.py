@@ -65,7 +65,7 @@ collect_resource_zone = st.selectbox(
 def submit_create():
 
     with st.sidebar:
-        created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':st.session_state.residents, 'rel_location': st.session_state.rel_location}
+        created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
 
             #         with MongoClient(my_db) as client:
             #             process_users = ChineseWallPolicy(collect_user_name, client)
