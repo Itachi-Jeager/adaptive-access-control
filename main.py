@@ -195,7 +195,7 @@ if st.button("Request Access"):
                 collect_residents = st.text_input('Enter Residents comma separated', key="residents")
 
                 
-                submit_button = st.form_submit_button(label='Submit', kwargs={'payload': st.session_state.source}, on_click=create_a)
+                submit_button = st.form_submit_button(label='Submit', on_click=create_a)
 
         elif collect_resource_zone == 'zone B':
             with st.form(key='create_form_b'):
