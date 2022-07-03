@@ -62,19 +62,19 @@ collect_resource_zone = st.selectbox(
 #     value=800
 # )
 
-# def submit_create(payload):
+def submit_create(payload):
 
-#     with st.sidebar:
-#         # created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
+    with st.sidebar:
+        # created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
 
-#         # with MongoClient(my_db) as client:
-#         #     process_users = ChineseWallPolicy(collect_user_name, client)
-#         #     create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
-#         #     # user_zones = process_users.wall_policy(collect_resource_zone)
-#         #     st.write(create_data)
+        # with MongoClient(my_db) as client:
+        #     process_users = ChineseWallPolicy(collect_user_name, client)
+        #     create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
+        #     # user_zones = process_users.wall_policy(collect_resource_zone)
+        #     st.write(create_data)
 
-#         st.write(payload)
-#         # st.write(st.session_state.source)
+        st.write(payload)
+        # st.write(st.session_state.source)
 
 
 
@@ -264,16 +264,3 @@ if st.button("Request Access"):
 # #         st.write(f"Welcome Device {collect_user_context}")
 # #         st.write("Display Content from Zone A")
 
-def submit_create(payload):
-
-    with st.sidebar:
-        # created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
-
-        # with MongoClient(my_db) as client:
-        #     process_users = ChineseWallPolicy(collect_user_name, client)
-        #     create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
-        #     # user_zones = process_users.wall_policy(collect_resource_zone)
-        #     st.write(create_data)
-
-        st.write(payload)
-        # st.write(st.session_state.source)
