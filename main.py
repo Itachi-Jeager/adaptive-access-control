@@ -79,15 +79,15 @@ def create_a():
 def create_b():
 
     with st.sidebar:
-        created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
+        created_item = {'name': st.session_state.b_name, 'status': st.session_state.b_status, 'gender': st.session_state.b_gender, 'location': {'name': st.session_state.b_address, 'url': st.session_state.b_url}, 'type': st.session_state.b_type}
 
-        # with MongoClient(my_db) as client:
-        #     process_users = ChineseWallPolicy(collect_user_name, client)
-        #     create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
-        #     # user_zones = process_users.wall_policy(collect_resource_zone)
-        #     st.write(create_data)
+        with MongoClient(my_db) as client:
+            process_users = ChineseWallPolicy(collect_user_name, client)
+            create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
+            # user_zones = process_users.wall_policy(collect_resource_zone)
+            st.write(create_data)
 
-        st.write()
+        # st.write()
         # st.write(st.session_state.source)
 
 
@@ -206,8 +206,6 @@ if st.button("Request Access"):
                 collect_type = st.text_input('Enter Business type', key='b_type')
                 collect_location = st.text_input('Enter Address', key='b_address')
                 collect_url = st.text_input('Enter Business URL', key='b_url')
-
-                created_item = {'name': collect_name, 'status': collect_name, 'gender': collect_gender, 'location': {'name': collect_location, 'url': collect_url}, 'type': collect_type}
 
                 submit_button = st.form_submit_button(label='Submit', on_click=create_b)
 
