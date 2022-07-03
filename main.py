@@ -62,18 +62,18 @@ collect_resource_zone = st.selectbox(
 #     value=800
 # )
 
-def submit_create():
+def submit_create(payload):
 
     with st.sidebar:
-        created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
+        # created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
 
-        with MongoClient(my_db) as client:
-            process_users = ChineseWallPolicy(collect_user_name, client)
-            create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
-            # user_zones = process_users.wall_policy(collect_resource_zone)
-            st.write(create_data)
+        # with MongoClient(my_db) as client:
+        #     process_users = ChineseWallPolicy(collect_user_name, client)
+        #     create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
+        #     # user_zones = process_users.wall_policy(collect_resource_zone)
+        #     st.write(create_data)
 
-        st.write(created_item)
+        st.write(payload)
         # st.write(st.session_state.source)
 
 
