@@ -62,10 +62,24 @@ collect_resource_zone = st.selectbox(
 #     value=800
 # )
 
-def submit_create(payload):
+def create_a():
 
     with st.sidebar:
-        # created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
+        created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
+
+        with MongoClient(my_db) as client:
+            process_users = ChineseWallPolicy(collect_user_name, client)
+            create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
+            # user_zones = process_users.wall_policy(collect_resource_zone)
+            st.write(create_data)
+
+        # st.write(created_item)
+        # st.write(st.session_state.source)
+
+def create_b():
+
+    with st.sidebar:
+        created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
 
         # with MongoClient(my_db) as client:
         #     process_users = ChineseWallPolicy(collect_user_name, client)
@@ -73,7 +87,22 @@ def submit_create(payload):
         #     # user_zones = process_users.wall_policy(collect_resource_zone)
         #     st.write(create_data)
 
-        st.write(payload)
+        st.write()
+        # st.write(st.session_state.source)
+
+
+def create_c():
+
+    with st.sidebar:
+        created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
+
+        # with MongoClient(my_db) as client:
+        #     process_users = ChineseWallPolicy(collect_user_name, client)
+        #     create_data = process_users.wall_create_policy(collect_resource_zone, created_item)
+        #     # user_zones = process_users.wall_policy(collect_resource_zone)
+        #     st.write(create_data)
+
+        st.write()
         # st.write(st.session_state.source)
 
 
@@ -165,10 +194,8 @@ if st.button("Request Access"):
                 collect_rel_location = st.text_input('Enter Location', key="rel_location")
                 collect_residents = st.text_input('Enter Residents comma separated', key="residents")
 
-                # created_item = {'source': collect_source, 'name': collect_name, 'residents':collect_residents, 'rel_location': collect_rel_location}
-
-                # created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
-                submit_button = st.form_submit_button(label='Submit', kwargs={'payload': st.session_state.source}, on_click=submit_create)
+                
+                submit_button = st.form_submit_button(label='Submit', kwargs={'payload': st.session_state.source}, on_click=create_a)
 
         elif collect_resource_zone == 'zone B':
             with st.form(key='create_form_b'):
@@ -182,7 +209,7 @@ if st.button("Request Access"):
 
                 created_item = {'name': collect_name, 'status': collect_name, 'gender': collect_gender, 'location': {'name': collect_location, 'url': collect_url}, 'type': collect_type}
 
-                submit_button = st.form_submit_button(label='Submit', on_click=submit_create)
+                submit_button = st.form_submit_button(label='Submit', on_click=create_b)
 
 
                 # if submit_button:
