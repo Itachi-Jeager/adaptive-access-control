@@ -165,7 +165,9 @@ if st.button("Request Access"):
                 collect_rel_location = st.text_input('Enter Location', key="rel_location")
                 collect_residents = st.text_input('Enter Residents comma separated', key="residents")
 
-                created_item = {'source': collect_source, 'name': collect_name, 'residents':collect_residents, 'rel_location': collect_rel_location}
+                # created_item = {'source': collect_source, 'name': collect_name, 'residents':collect_residents, 'rel_location': collect_rel_location}
+
+                created_item = {'source': st.session_state.source, 'name': st.session_state.name, 'residents':[st.session_state.residents], 'rel_location': st.session_state.rel_location}
                 submit_button = st.form_submit_button(label='Submit', kwargs={'payload': created_item}, on_click=submit_create)
 
         elif collect_resource_zone == 'zone B':
